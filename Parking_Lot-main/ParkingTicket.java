@@ -8,6 +8,7 @@ public class ParkingTicket{
 	private long CardNumber ;
 	public String CardType;
 	public int SpotNumber;
+        private String parkingType;
 
 	public Car car;
 
@@ -59,5 +60,16 @@ public class ParkingTicket{
 	public void setSpotNumber(int SpotNumber){
 		this.SpotNumber = SpotNumber;
 	}
+        public String getparkingType(){
+		return parkingType;
+	}
+
+	public void setparkingType(String parkingType){
+		this.parkingType = parkingType;
+	}
+        
+        public void print () {
+            System.out.println("Your parking is " + parkingType);
+        }
 
 }
