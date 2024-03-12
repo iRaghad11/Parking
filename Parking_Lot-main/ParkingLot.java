@@ -5,9 +5,12 @@ import java.util.*;
 public class ParkingLot{
 
 	public static void main(String[] args){
+            
 
 		ArrayList<ParkingTicket> assignedspotlist = new ArrayList<>();
 
+                //Factory pattern
+            ParkingTicket ticket = parkingTicketFactory.chooseTicket(parkingTicketFactory.Normal);
 
 		ParkingSpot parkingspot = new ParkingSpot();
 		RandomInfo randominfo = new RandomInfo();
@@ -15,7 +18,7 @@ public class ParkingLot{
 
 		while( true ) {
 
-			System.out.print("You want to parked your vehicle : ");
+			System.out.print("Enter the code number you want (5 digit) or if you want the info to exit (last 3 digit of your code) : ");
 			String userinput = scan.nextLine();
 			int size = userinput.length();
 
@@ -23,7 +26,6 @@ public class ParkingLot{
 			Car car = new Car();
 
 			if (size == 5) {
-				System.out.print("\033\143");
 				// get car information from car class
 				String carcolor = randominfo.CarColor();
 				String numberplate = randominfo.Numberplate();
@@ -53,6 +55,10 @@ public class ParkingLot{
 				parkingticket.setTime(time);
 				parkingticket.setDate(date);
 				parkingticket.setCardNumber(cardnumber);
+                                
+                                
+           
+            
 
 
 
@@ -60,14 +66,18 @@ public class ParkingLot{
 						"Car Number : " + numberplate + "    Car Color : " + carcolor + "    Car Type : " + cartype +
 						"\nParking Time : " + time + "    Date : " + date +
 						"\nSpot Number : " + spotnum + "\n"
+                                                
 				);
+                                
+            //Factory pattern                    
+            ticket.print();
 
 
 				assignedspotlist.add(parkingticket);
 				System.out.println(assignedspotlist.size());
 
 			}
-			else if(size == 4){
+			else if(size == 3){
 				//System.out.print("\033\143");
 				int cheakspot = parkingspot.si();
 				if (cheakspot == 10 ){
@@ -112,8 +122,10 @@ public class ParkingLot{
 									"    Exit Date :" +exitdate+
 									"    Spot Number : "+assignedspotlist.get(spot).getSpotNumber()+
 									"\nTotal Time : "+time[0]+" Hour "+time[1]+" Minute "+
-									"\nTotal Amount : "+amount+" rupees\n"
+									"\nTotal Amount : "+amount+" rupees"
 							);
+                                                        //Factory pattern
+                                                        ticket.print();
 
 							parkingspot.FreeSpot(assignedspotlist.get(spot).getSpotNumber());
 							assignedspotlist.remove(spot);
