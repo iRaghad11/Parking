@@ -5,6 +5,9 @@ import java.util.*;
 public class ParkingLot{
 
 	public static void main(String[] args){
+
+		//singleton pattern
+		ParkingSpot parkingspot = ParkingSpot.getInstance();
             
 
 		ArrayList<ParkingTicket> assignedspotlist = new ArrayList<>();
@@ -12,7 +15,6 @@ public class ParkingLot{
                 //Factory pattern
             ParkingTicket ticket = parkingTicketFactory.chooseTicket(parkingTicketFactory.Normal);
 
-		ParkingSpot parkingspot = new ParkingSpot();
 		RandomInfo randominfo = new RandomInfo();
 		Scanner scan = new Scanner(System.in);
 
