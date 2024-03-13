@@ -1,6 +1,17 @@
 public class ParkingSpot{
-	
-	int[] arr = new int[10];
+	private static ParkingSpot instance;
+	private int[] arr;
+
+	private ParkingSpot(){
+		arr = new int[10];
+	}
+
+	public static ParkingSpot getInstance(){
+		if (instance == null){
+			instance = new ParkingSpot();
+		}
+		return instance;
+	}	
 
 
 	public int SpotNum(){
