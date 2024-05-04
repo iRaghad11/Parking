@@ -58,6 +58,5 @@ public class ParkingTicket{
 
 	public void setSpotNumber(int SpotNumber){
 		this.SpotNumber = SpotNumber;
-	}
-
+	}      
 }

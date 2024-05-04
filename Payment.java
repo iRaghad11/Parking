@@ -3,6 +3,7 @@ public class Payment{
     float HourAmount = 30;
     float TotalAmountForHour = 0;
     float TotalAmountForMinute = 0;
+    private String paymentType;
 
     public float TotalAmount(int Hour, int Minute){
         TotalAmountForHour = Hour * HourAmount;
@@ -19,4 +20,15 @@ public class Payment{
         return (TotalAmountForHour+TotalAmountForMinute);
     }
 
+    public String getpaymentType(){
+		return paymentType;
+	}
+
+	public void setpaymentType(String parkingType){
+		this.paymentType = parkingType;
+	}
+        public void print () {
+            System.out.println("Payment: " + paymentType);
+        }
+        public void Pay(){}
 }

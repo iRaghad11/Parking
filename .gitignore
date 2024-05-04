@@ -1,2 +1,12 @@
 *.class
 .idea
+/Parking/nbproject/private/
+/Parking/build/
+/lab4_designPatterns/nbproject/private/
+/lab4_designPatterns/build/
+/Lab5_designPattern/nbproject/private/
+/Lab5_designPattern/build/
+/lab6DesignPattern/nbproject/private/
+/lab6DesignPattern/build/
+/Lab7_designPatterns/nbproject/private/
+/Lab7_designPatterns/build/
