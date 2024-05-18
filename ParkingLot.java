@@ -1,25 +1,30 @@
 
-import java.util.ArrayList;
 import java.util.*;
 
 public class ParkingLot {
 
     public static void main(String[] args) {
+        //State pattern
+        Client context = new Client();
+                                       
+                CloseGate stopState = new CloseGate();
+		stopState.doAction(context);
+		System.out.println(context.getclientState().toString());
 
-        //singleton pattern
+        // singleton pattern
         ParkingSpot parkingspot = ParkingSpot.getInstance();
 
         ArrayList<ParkingTicket> assignedspotlist = new ArrayList<>();
 
-        //Factory pattern
+        // Factory pattern
         Payment pay = paymentFactory.choosePayment(paymentFactory.cash);
 
         Clean cleanCar1 = new ScanTheCar();
         cleanCar1.cleans();
-        //Decorator pattern
+        // Decorator pattern
         Clean cleanCar = new CarCleanDecorator(new ScanTheCar());
 
-        //Facade pattern
+        // Facade pattern
         PaymentAcc Payby = new PaymentAcc();
         Payby.PayCash();
 
@@ -55,21 +60,62 @@ public class ParkingLot {
             parkingticket.setDate(date);
             parkingticket.setCardNumber(cardnumber);
 
-            int[] timee = {0, 0};
-            float amount = 0;
+            Payment paymentAmount = new Payment();
+
+            int[] timee = { 4, 30 };
+            float baseAmount = paymentAmount.TotalAmount(timee[0], timee[1]);
+            
+            //Strategy pattern
+            CalculateTaxAmount calculateTaxAmount = new CalculateTaxAmount();
+            CalculateTipAmount calculateTipAmount = new CalculateTipAmount();
+
+            float totalAmount = baseAmount;
+
+            while (true) {
+
+                System.out.print("Do you want to add a tip? y/n. ");
+                String tipInput = scan.nextLine();
+
+                if (tipInput.toLowerCase().equals("y")) {
+
+                    System.out.print("Input your tip percentage 0-100. ");
+                    String tipPercentageInput = scan.nextLine();
+
+                    float tippedAmount = calculateTipAmount.ApplyPercentageIncrease(baseAmount,
+                            Integer.parseInt(tipPercentageInput));
+
+                    totalAmount = tippedAmount;
+                    System.out.print(tippedAmount);
+
+                    break;
+                } else if (tipInput.toLowerCase().equals("n")) {
+                    float taxedAmount = calculateTaxAmount.ApplyPercentageIncrease(baseAmount,
+                            15);
+                    totalAmount = taxedAmount;
+                    System.out.print(taxedAmount);
+
+                    break;
+
+                } else {
+                    continue;
+                }
+            }
 
             System.out.println("\t\t== Parking Ticket ==\n"
                     + "Car Number : " + numberplate + "    Car Color : " + carcolor + "    Car Type : " + cartype
                     + "\nParking Time : " + time + "    Date : " + date
                     + "\nSpot Number : " + spotnum
                     + "\nTotal Time : " + timee[0] + " Hour " + timee[1] + " Minute "
-                    + "\nTotal Amount : " + amount + " rupees."
-            );
+                    + "\nTotal Amount : " + totalAmount + " riyal.");
 
-            //Factory pattern                    
+            // Factory pattern
             pay.print();
-            //Decorator pattern
+            // Decorator pattern
             cleanCar.cleans();
+            //State pattern
+            OpenGate startState = new OpenGate();
+		    startState.doAction(context);
+		    System.out.println(context.getclientState().toString());
 
         }
     }
