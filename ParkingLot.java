@@ -7,9 +7,9 @@ public class ParkingLot {
         //State pattern
         Client context = new Client();
                                        
-                CloseGate stopState = new CloseGate();
-		stopState.doAction(context);
-		System.out.println(context.getclientState().toString());
+        CloseGate stopState = new CloseGate();
+        stopState.doAction(context);
+        System.out.println(context.getgateState().toString());
 
         // singleton pattern
         ParkingSpot parkingspot = ParkingSpot.getInstance();
@@ -115,7 +115,7 @@ public class ParkingLot {
             //State pattern
             OpenGate startState = new OpenGate();
 		    startState.doAction(context);
-		    System.out.println(context.getclientState().toString());
+		    System.out.println(context.getgateState().toString());
 
         }
     }
