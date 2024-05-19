@@ -4,9 +4,9 @@ import java.util.*;
 public class ParkingLot {
 
     public static void main(String[] args) {
-        //State pattern
+        // State pattern
         Client context = new Client();
-                                       
+
         CloseGate stopState = new CloseGate();
         stopState.doAction(context);
         System.out.println(context.getgateState().toString());
@@ -64,10 +64,10 @@ public class ParkingLot {
 
             int[] timee = { 4, 30 };
             float baseAmount = paymentAmount.TotalAmount(timee[0], timee[1]);
-            
-            //Strategy pattern
-            CalculateTaxAmount calculateTaxAmount = new CalculateTaxAmount();
-            CalculateTipAmount calculateTipAmount = new CalculateTipAmount();
+
+            // Strategy pattern
+            PaymentHandler paymentHandler_Tip = new PaymentHandler(new CalculateTipAmount());
+            PaymentHandler paymentHandler_Tax = new PaymentHandler(new CalculateTaxAmount());
 
             float totalAmount = baseAmount;
 
@@ -81,7 +81,7 @@ public class ParkingLot {
                     System.out.print("Input your tip percentage 0-100. ");
                     String tipPercentageInput = scan.nextLine();
 
-                    float tippedAmount = calculateTipAmount.ApplyPercentageIncrease(baseAmount,
+                    float tippedAmount = paymentHandler_Tip.executeCalculation(baseAmount,
                             Integer.parseInt(tipPercentageInput));
 
                     totalAmount = tippedAmount;
@@ -89,7 +89,7 @@ public class ParkingLot {
 
                     break;
                 } else if (tipInput.toLowerCase().equals("n")) {
-                    float taxedAmount = calculateTaxAmount.ApplyPercentageIncrease(baseAmount,
+                    float taxedAmount = paymentHandler_Tax.executeCalculation(baseAmount,
                             15);
                     totalAmount = taxedAmount;
                     System.out.print(taxedAmount);
@@ -112,10 +112,10 @@ public class ParkingLot {
             pay.print();
             // Decorator pattern
             cleanCar.cleans();
-            //State pattern
+            // State pattern
             OpenGate startState = new OpenGate();
-		    startState.doAction(context);
-		    System.out.println(context.getgateState().toString());
+            startState.doAction(context);
+            System.out.println(context.getgateState().toString());
 
         }
     }
