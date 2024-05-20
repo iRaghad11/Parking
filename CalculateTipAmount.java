@@ -1,3 +1,4 @@
+package Parking;
 public class CalculateTipAmount implements CalcPayment {
 
     @Override

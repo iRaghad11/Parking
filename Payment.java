@@ -1,3 +1,4 @@
+package Parking;
 public class Payment{
 
     float HourAmount = 30;

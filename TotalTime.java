@@ -1,3 +1,4 @@
+package Parking;
 public class TotalTime{
 
     public static int[] CalculateTime(String enterdate, String exitdate, String entertime, String exittime){

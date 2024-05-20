@@ -1,3 +1,4 @@
+package Parking;
 public class paymentFactory {
     
     public static final int cash=1;

@@ -1,3 +1,4 @@
+package Parking;
 public abstract class CleanDecorator implements Clean { 
 	
 	protected Clean decoratedClean;
@@ -6,7 +7,7 @@ public abstract class CleanDecorator implements Clean {
 		this.decoratedClean = decoratedClean; 
 	} 
 
-	public void Cleans(){ 
-		decoratedClean.Cleans(); 
+	public void cleans(){ 
+		decoratedClean.cleans(); 
 	} 
 } 

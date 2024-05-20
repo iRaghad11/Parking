@@ -1,3 +1,4 @@
+package Parking;
 public class CalculateTaxAmount implements CalcPayment {
 
     @Override

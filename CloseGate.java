@@ -1,8 +1,8 @@
-
+package Parking;
 public class CloseGate implements GateState {
 
 	public void doAction(Client context) {
-		System.out.println("the Gate is closed");
+		System.out.println("The gate is closed");
 		context.setgateState(this);
 	}
 

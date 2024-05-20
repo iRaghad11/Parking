@@ -1,3 +1,4 @@
+package Parking;
 public class ParkingSpot{
 	
 	private static ParkingSpot instance;

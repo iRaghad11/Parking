@@ -1,3 +1,4 @@
+package Parking;
 public class ScanTicket{
 
     public int cheaknumber(String inputnumber, String storenumber){

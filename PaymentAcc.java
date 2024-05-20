@@ -1,4 +1,4 @@
-
+package Parking;
 public class PaymentAcc {
     private Payment creditCard; 
  private Payment cash; 

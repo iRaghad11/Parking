@@ -1,12 +1,12 @@
-
+package Parking;
 public class OpenGate implements GateState {
 
 	public void doAction(Client context) {
-		System.out.println("the Gate is Open");
+		System.out.println("The gate is open");
 		context.setgateState(this);
 	}
 
 	public String toString(){
-		return "Open State";
+		return "Open state";
 	}
 }

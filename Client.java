@@ -1,4 +1,4 @@
-
+package Parking;
 public class Client {
 	
 	private GateState state;

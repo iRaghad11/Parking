@@ -1,9 +1,12 @@
-
+package Parking;
 import java.util.*;
 
 public class ParkingLot {
 
     public static void main(String[] args) {
+        
+        System.out.println("----------------------------");
+        
         // State pattern
         Client context = new Client();
 
@@ -19,10 +22,10 @@ public class ParkingLot {
         // Factory pattern
         Payment pay = paymentFactory.choosePayment(paymentFactory.cash);
 
-        Clean cleanCar1 = new ScanTheCar();
+        Clean cleanCar1 = new innerClean();
         cleanCar1.cleans();
         // Decorator pattern
-        Clean cleanCar = new CarCleanDecorator(new ScanTheCar());
+        Clean cleanCar = new DeepCleaningDecorator(new innerClean());
 
         // Facade pattern
         PaymentAcc Payby = new PaymentAcc();
@@ -85,7 +88,7 @@ public class ParkingLot {
                             Integer.parseInt(tipPercentageInput));
 
                     totalAmount = tippedAmount;
-                    System.out.print(tippedAmount);
+                    
 
                     break;
                 } else if (tipInput.toLowerCase().equals("n")) {
@@ -101,7 +104,7 @@ public class ParkingLot {
                 }
             }
 
-            System.out.println("\t\t== Parking Ticket ==\n"
+            System.out.println("\n\t\t== Parking Ticket ==\n"
                     + "Car Number : " + numberplate + "    Car Color : " + carcolor + "    Car Type : " + cartype
                     + "\nParking Time : " + time + "    Date : " + date
                     + "\nSpot Number : " + spotnum
@@ -112,6 +115,9 @@ public class ParkingLot {
             pay.print();
             // Decorator pattern
             cleanCar.cleans();
+            
+            System.out.print("\n");
+            
             // State pattern
             OpenGate startState = new OpenGate();
             startState.doAction(context);

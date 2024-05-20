@@ -1,4 +1,4 @@
-
+package Parking;
 public class creditCard extends Payment {
 
     public creditCard() {
